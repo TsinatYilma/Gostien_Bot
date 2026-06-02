@@ -7,14 +7,17 @@ from telegram.ext import (
     ContextTypes,
     filters,
 )
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # States
 NAME, PHONE, EMAIL, SCREENSHOT = range(4)
 
-# Configuration
-BOT_TOKEN = "8970891992:AAF6rUcZpPOa9gfAzHlZAI8sHW9BHnrzWyE"
-ADMIN_ID = 5682025501  # Replace with your Telegram ID
-REGISTRATION_FEE = "5000 ETB"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID"))
+REGISTRATION_FEE = os.getenv("REGISTRATION_FEE", "500 ETB")
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
